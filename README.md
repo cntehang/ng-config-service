@@ -1,10 +1,14 @@
 # ng-config-service
 
-> A configuration service for Angular application
+> A simple and flexible runtime config service for Angular application.
+
+This runtime config service is simple to use with one line to initialize it and one single method to get configuration values. Nonetheless, it is flexible to support different usage scenarios: flexible configuration schema and flexible configuration file path that supports enviornment variables. Because it uses `HttpClient` to retrieve the configuration data from the specified URL, the configuration source can be an API that returns configuration in JSON format.
+
+[The Angular application enviornments](https://github.com/angular/angular-cli/wiki/stories-application-environments) is a build time configuration service that is not appriopriate for runtimee because any change in the envirornment requires a rebuild/recompile of the source code. The runtime config service doesn't need rebuild/recompile of the source code to change the configuration.
 
 ## Installing / Getting started
 
-There are three steps to setup the configuration service.
+There are three steps to setup the config service.
 
 1. Install the `ng-config-service` packge: `npm install ng-config-service`
 1. Create a configuration JSON file in your project. The default path is `assets/config/config.json`. If the file is in a different location, the file path has to be passed as a parameter to initialize DI proivders. **The file path is a relative path string without the leading "src" part**.
@@ -37,7 +41,7 @@ const configServiceProviders = [...initConfigServiceProviders()]
 export class AppModule {}
 ```
 
-Then the configuration service can be injected and its `public getProperty<T>(key: string): T | undefined` method is used to get a configuration value. Following is a demo:
+Then the config service can be injected and its `public getProperty<T>(key: string): T | undefined` method is used to get a configuration value. Following is a demo:
 
 ```ts
 import { ConfigService } from 'ng-config-service'
