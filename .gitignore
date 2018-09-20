@@ -23,7 +23,7 @@ yarn-error.log*
 .env.*
 
 #Build generated
-dist/
+dist/*
 build/
 
 # Serverless generated files
