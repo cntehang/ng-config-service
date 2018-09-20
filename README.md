@@ -4,7 +4,7 @@
 
 This runtime config service is simple to use with one line to initialize it and one single method to get configuration values. Nonetheless, it is flexible to support different usage scenarios: flexible configuration schema and flexible configuration file path that supports enviornment variables. Because it uses `HttpClient` to retrieve the configuration data from the specified URL, the configuration source can be an API that returns configuration in JSON format.
 
-[The Angular application enviornments](https://github.com/angular/angular-cli/wiki/stories-application-environments) is a build time configuration service that is not appriopriate for runtimee because any change in the envirornment requires a rebuild/recompile of the source code. The runtime config service doesn't need rebuild/recompile of the source code to change the configuration.
+[The Angular application enviornments](https://github.com/angular/angular-cli/wiki/stories-application-environments) is a build time configuration tool that is not appriopriate for runtimee because any change in the envirornment requires a rebuild/recompile of the source code. The runtime config service doesn't need rebuild/recompile of the source code to change the configuration.
 
 ## Installing / Getting started
 
@@ -74,6 +74,8 @@ The source code has several projects created by Angular CLI and uses its [librar
 
 ### Building
 
+Because of the limitation of Angular CLI, both the `package.json` and the `project/ng-config-service/package.json` should use the name `name` of `ng-config-service`. For each new publish, use the same `version` value.
+
 In project root, build the library project using `npm run build-lib`.
 
 The demo app is build with the regular Angular CLI: `ng build`. To run the demo, use `ng serve --open` and you should see the property value configured in `assets/config/config.json` file.
@@ -82,6 +84,8 @@ The demo app is build with the regular Angular CLI: `ng build`. To run the demo,
 
 To create the NPM package, run `npm run package`.
 To publish the NPM package, run `npm run publish`.
+
+The `cross-var` package is used to provide cross-platform protability.
 
 ## Versioning
 
