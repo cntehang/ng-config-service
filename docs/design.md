@@ -16,11 +16,11 @@ Angular doesn't provide a standard mechanism to define and use runtime configura
 
 ## Requirments
 
-An Angular application usually has different configuration for different build enviornment. The configuration data can be retrieved from a backend API. The configuration data URL should be provided as a parameter to the configuration service.
-
 The configuration data should be loaded during Angular bootstrap, before the application code runs.
 
-Becuase new applications such as PWA applications support automatic updates, a desired feature is that the runtime configuration service supports dynamic configuration.
+The configuration data source can be a JSON file or an API that returns JSON data.
+
+To make it simple, there are onlyh two public API: `load` to load configuraiton data and `get` to get a configuration value for a specific key.
 
 ## Design
 
@@ -34,7 +34,7 @@ It's possbile to specify a configuration file path or a backend API URL to get t
 
 ### Configuration Service
 
-The configuration service uses HTTP protocol to get the configuration file and initialize the configuration settings. The configuration service should be a singlton created by the root injector。It has an `load` method that is called by a service provider to load the configuration file.
+The configuration service uses HTTP(S) protocol to get the configuration file and initialize the configuration settings. The configuration service should be a singlton created by the root injector。It has an `load` method that is called by a DI provider to load the configuration file.
 
 ### Configuration Service Provider
 

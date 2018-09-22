@@ -10,6 +10,6 @@ export class AppComponent {
   propertyValue = 'not defined'
 
   constructor(service: ConfigService) {
-    this.propertyValue = service.getProperty('testKey')
+    this.propertyValue = service.get('testKey')
   }
 }
