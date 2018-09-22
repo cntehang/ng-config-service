@@ -12,9 +12,9 @@ There are three steps to setup the config service.
 
 1. Install the `ng-config-service` packge: `npm install ng-config-service`
 1. Create a configuration JSON file in your project. The default path is `assets/config/config.json`. If the file is in a different location, the file path has to be passed as a parameter to initialize DI proivders. **The file path is a relative path string without the leading "src" part**.
-1. Initialize the config service DI providers and add them in the root module.
+1. Initialize the config service DI providers in the root module.
 
-The last step uses a uitility function `initConfigServiceProviders` that is exported from the `ng-config-service`. The utility function take an optional URL parameter of configuration data and returns both a `ConfigService` provide and an `APP_INITIALIZER` provide. The `APP_INITIALIZER` uses a factory function that loads configuration data from the specified URL during Angular bootstrap. The following code is an example showing the initialization and provision of the `ConfigService` provide and the `APP_INITIALIZER` provide.
+The last step uses a uitility function `initConfigServiceProviders` that is exported from the `ng-config-service`. The utility function take an optional URL parameter of configuration data and returns both a `ConfigService` provider and an `APP_INITIALIZER` provider. The `APP_INITIALIZER` uses a factory function that loads configuration data from the specified URL during Angular bootstrap. The following code is an example showing the initialization and provision of the `ConfigService` provide and the `APP_INITIALIZER` provide.
 
 Because the config service use `HttpClient` to fetch the configuration data, please make sure that `HttpClientModule` is imported in the root module.
 
@@ -41,7 +41,9 @@ const configServiceProviders = [...initConfigServiceProviders()]
 export class AppModule {}
 ```
 
-Then the config service can be injected and its `public getProperty<T>(key: string): T | undefined` method is used to get a configuration value. Following is a demo:
+### Usage
+
+The config service can be injected and its `public get<T>(key: string): T | undefined` method is used to get a configuration value. Following is a demo:
 
 ```ts
 import { ConfigService } from 'ng-config-service'
@@ -53,7 +55,7 @@ export class MyComponent {
   constructor(private configService: ConfigService) {}
 
   myMethod() {
-    const aValue = this.configService.getProperty('aKey')
+    const aValue = this.configService.get('aKey')
   }
 }
 ```
