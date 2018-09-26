@@ -82,15 +82,11 @@ export function initializeService(config: ConfigService) {
 
 /**
  * Initialize the `APP_INITIALIZER` provider.
- *
- * @returns An `APP_INITIALIZER` provider.
- * The result are added to the `providers` property in AppModule definition.
+ * It should be added to the `providers` property in AppModule definition.
  */
-export function bootConfigServiceProvider(): Provider {
-  return {
-    provide: APP_INITIALIZER,
-    useFactory: initializeService,
-    multi: true,
-    deps: [ConfigService],
-  }
+export const bootConfigServiceProvider: Provider = {
+  provide: APP_INITIALIZER,
+  useFactory: initializeService,
+  multi: true,
+  deps: [ConfigService],
 }

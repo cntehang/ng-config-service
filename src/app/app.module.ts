@@ -10,11 +10,13 @@ import { bootConfigServiceProvider, NG_CONFIG_URL_TOKEN } from 'ng-config-servic
   declarations: [AppComponent],
   imports: [BrowserModule, HttpClientModule],
   providers: [
+    /*     
     {
       provide: NG_CONFIG_URL_TOKEN,
       useValue: 'assets/config/config2.json',
-    },
-    bootConfigServiceProvider(),
+    }, 
+    */
+    bootConfigServiceProvider,
   ],
   bootstrap: [AppComponent],
 })
