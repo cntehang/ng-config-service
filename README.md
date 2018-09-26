@@ -4,13 +4,13 @@
 
 ## Installing / Getting started
 
-There are three steps to setup the config service using the default ocnfiguration file path of `assets/config/config.json`.
+There are three steps to setup the config service using the default configuration file path of `assets/config/config.json`.
 
-1. Install the `ng-config-service` packge: `npm install ng-config-service`
+1. Install the `ng-config-service` package: `npm install ng-config-service`
 1. Create a configuration JSON file `assets/config/config.json` in your project.
 1. Bootstrap the config service in the root module. Because the config service use the `HttpClient` to fetch the configuration data, please make sure that `HttpClientModule` is imported in the root module.
 
-The last step uses a uitility function `bootConfigServiceProvider` that is exported from the `ng-config-service`. This utility function returns an `APP_INITIALIZER` provider that uses a factory method to load configuration data during Angular bootstrap. The following code is an example using the default configuration file path.
+The last step uses a const `bootConfigServiceProvider` that is exported from the `ng-config-service`. This const is a `APP_INITIALIZER` provider that uses a factory method to load configuration data during Angular bootstrap. The following code is an example using the default configuration file path.
 
 ```ts
 import { BrowserModule } from '@angular/platform-browser'
@@ -18,28 +18,27 @@ import { NgModule } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
 
 import { bootConfigServiceProvider } from 'ng-config-service'
-]
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, HttpClientModule],
 
   // use the APP_INITIALIZER to load configuration data
-  providers: [bootConfigServiceProvider()],
+  providers: [bootConfigServiceProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
 
-If you want to use a different URL of a configuration file path or an HTTP API, you only need to assign the URL to a pre-defined injection token `NG_CONFIG_URL_TOKEN` in the above `providers` metadata. The folowing is an example.
+If you want to use a different URL of a configuration file path or an HTTP API, you only need to assign the URL to a pre-defined injection token `NG_CONFIG_URL_TOKEN` in the above `providers` metadata. The following is an example.
 
 ```ts
 providers: [
   {
     provide: NG_CONFIG_URL_TOKEN,
-    useValue: 'path/to/my-config-file.json',  // could be an URL API or an enviornment variable
+    useValue: 'path/to/my-config-file.json',  // could be an URL API or an environment variable
   },
-  bootConfigServiceProvider(),
+  bootConfigServiceProvider,
 ],
 ```
 
@@ -64,9 +63,9 @@ export class MyComponent {
 
 ## Developing
 
-This runtime config service is simple to use with one line to initialize it and one single method to get configuration values. Nonetheless, it is flexible to support different usage scenarios: flexible configuration schema and flexible configuration file path that supports enviornment variables. Because it uses `HttpClient` to retrieve the configuration data from the specified URL, the configuration source can be an API that returns configuration in JSON format.
+This runtime config service is simple to use with one line to initialize it and one single method to get configuration values. Nonetheless, it is flexible to support different usage scenarios: flexible configuration schema and flexible configuration file path that supports environment variables. Because it uses `HttpClient` to retrieve the configuration data from the specified URL, the configuration source can be an API that returns configuration in JSON format.
 
-[The Angular application enviornments](https://github.com/angular/angular-cli/wiki/stories-application-environments) is a build time configuration tool that is not appriopriate for runtimee because any change in the envirornment requires a rebuild/recompile of the source code. The runtime config service doesn't need rebuild/recompile of the source code to change the configuration.
+[The Angular application environments](https://github.com/angular/angular-cli/wiki/stories-application-environments) is a build time configuration tool that is not appropriate for runtime because any change in the environment requires a rebuild/recompile of the source code. The runtime config service doesn't need rebuild/recompile of the source code to change the configuration.
 
 ### Built With
 
@@ -93,7 +92,7 @@ The demo app is build with the regular Angular CLI: `ng build`. To run the demo,
 To create the NPM package, run `npm run package`.
 To publish the NPM package, run `npm run publish`.
 
-The `cross-var` package is used to provide cross-platform protability.
+The `cross-var` package is used to provide cross-platform portability.
 
 ## Versioning
 
