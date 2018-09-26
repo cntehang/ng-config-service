@@ -2,43 +2,45 @@
 
 > A simple and flexible runtime config service for Angular application.
 
-This runtime config service is simple to use with one line to initialize it and one single method to get configuration values. Nonetheless, it is flexible to support different usage scenarios: flexible configuration schema and flexible configuration file path that supports enviornment variables. Because it uses `HttpClient` to retrieve the configuration data from the specified URL, the configuration source can be an API that returns configuration in JSON format.
-
-[The Angular application enviornments](https://github.com/angular/angular-cli/wiki/stories-application-environments) is a build time configuration tool that is not appriopriate for runtimee because any change in the envirornment requires a rebuild/recompile of the source code. The runtime config service doesn't need rebuild/recompile of the source code to change the configuration.
-
 ## Installing / Getting started
 
-There are three steps to setup the config service.
+There are three steps to setup the config service using the default ocnfiguration file path of `assets/config/config.json`.
 
 1. Install the `ng-config-service` packge: `npm install ng-config-service`
-1. Create a configuration JSON file in your project. The default path is `assets/config/config.json`. If the file is in a different location, the file path has to be passed as a parameter to initialize DI proivders. **The file path is a relative path string without the leading "src" part**.
-1. Initialize the config service DI providers in the root module.
+1. Create a configuration JSON file `assets/config/config.json` in your project.
+1. Bootstrap the config service in the root module. Because the config service use the `HttpClient` to fetch the configuration data, please make sure that `HttpClientModule` is imported in the root module.
 
-The last step uses a uitility function `initConfigServiceProviders` that is exported from the `ng-config-service`. The utility function take an optional URL parameter of configuration data and returns both a `ConfigService` provider and an `APP_INITIALIZER` provider. The `APP_INITIALIZER` uses a factory function that loads configuration data from the specified URL during Angular bootstrap. The following code is an example showing the initialization and provision of the `ConfigService` provide and the `APP_INITIALIZER` provide.
-
-Because the config service use `HttpClient` to fetch the configuration data, please make sure that `HttpClientModule` is imported in the root module.
+The last step uses a uitility function `bootConfigServiceProvider` that is exported from the `ng-config-service`. This utility function returns an `APP_INITIALIZER` provider that uses a factory method to load configuration data during Angular bootstrap. The following code is an example using the default configuration file path.
 
 ```ts
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
 
-import { initConfigServiceProviders } from 'ng-config-service'
-
-// the initConfigServiceProviders call returns an array that has a `ConfigService` provide and an `APP_INITIALIZER` provide
-// the initConfigServiceProviders method can take a URL parameter of configuration data.
-// If the URL parameter is missing, the default configuration file path of  'assets/config/config.json' is used.
-const configServiceProviders = [...initConfigServiceProviders()]
+import { bootConfigServiceProvider } from 'ng-config-service'
+]
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, HttpClientModule],
 
-  // add the two provides
-  providers: [configServiceProviders],
+  // use the APP_INITIALIZER to load configuration data
+  providers: [bootConfigServiceProvider()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+```
+
+If you want to use a different URL of a configuration file path or an HTTP API, you only need to assign the URL to a pre-defined injection token `NG_CONFIG_URL_TOKEN` in the above `providers` metadata. The folowing is an example.
+
+```ts
+providers: [
+  {
+    provide: NG_CONFIG_URL_TOKEN,
+    useValue: 'path/to/my-config-file.json',  // could be an URL API or an enviornment variable
+  },
+  bootConfigServiceProvider(),
+],
 ```
 
 ### Usage
@@ -61,6 +63,10 @@ export class MyComponent {
 ```
 
 ## Developing
+
+This runtime config service is simple to use with one line to initialize it and one single method to get configuration values. Nonetheless, it is flexible to support different usage scenarios: flexible configuration schema and flexible configuration file path that supports enviornment variables. Because it uses `HttpClient` to retrieve the configuration data from the specified URL, the configuration source can be an API that returns configuration in JSON format.
+
+[The Angular application enviornments](https://github.com/angular/angular-cli/wiki/stories-application-environments) is a build time configuration tool that is not appriopriate for runtimee because any change in the envirornment requires a rebuild/recompile of the source code. The runtime config service doesn't need rebuild/recompile of the source code to change the configuration.
 
 ### Built With
 
