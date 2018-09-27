@@ -34,7 +34,6 @@ export class ConfigService {
   /**
    * Load the configuration settings using HttpClient get method.
    *
-   * @param configUrl The URL of the configuration data.
    * @returns A function that returns a Promise.
    * The function is used by the factory method in defining `APP_INITIALIZER` provide.
    */
