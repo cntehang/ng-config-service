@@ -1,6 +1,6 @@
 {
   "name": "ng-config-service",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A simple configuration service for Angular 6.0 or later. It uses HttpClient to fetch configuration data during the Angular bootstrap.",
   "peerDependencies": {
     "@angular/common": ">=6.0.0",
