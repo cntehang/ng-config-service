@@ -79,7 +79,7 @@ The source code has two projects created by Angular CLI and uses its [library su
 
 ### Building
 
-Because of the limitation of Angular CLI, both the `package.json` and the `project/ng-config-service/package.json` should use the name `name` of `ng-config-service`. For each new publish, use the same `version` value.
+Because of the limitation of Angular CLI, both the `package.json` and the `project/ng-config-service/package.json` should use the name `name` of `ng-config-service`. For each new publish, update both `package.json` files to use the same `version` value.
 
 In project root, build the library project using `npm run build-lib`.
 

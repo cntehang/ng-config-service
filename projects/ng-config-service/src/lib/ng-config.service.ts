@@ -48,8 +48,10 @@ export class ConfigService {
         .then(data => {
           this.settings = data
         })
-        .catch(err => {
-          console.error(`ConfigService failed to load ${this.url}. Error: ${err}`)
+        .catch(error => {
+          const message = `ConfigService failed to load ${this.url}. 
+            Error: ${error.message || (error.error ? error.error.message : 'undefined')}`
+          throw new Error(message)
         })
     }
   }

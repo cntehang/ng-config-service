@@ -29,6 +29,10 @@ Remove the generated component/module files of `ng-config-service.component.spec
 
 Because all build scripts are defined in the root `package.json` file and the real project name is `ng-config-service`, set the `"name": "ng-config-service"` in the root `package.json` thus the `name` can be used in NPM package build and publish.
 
+## Handle Errors
+
+If the `HttpClient` fails to load the configuraiton data, it should thrown an `Error`. The error message is created from the `HttpClient` error: either from `error.message` or `error.error.message` as shown in the following code: `error.message || (error.error ? error.error.message : 'undefined')`.
+
 [ionic-configuration-service]: https://github.com/Ritzlgrmft/ionic-configuration-service
 [angular-library-series]: https://blog.angularindepth.com/the-angular-library-series-publishing-ce24bb673275
 [ng-config]: https://github.com/BizAppFramework/ng-config

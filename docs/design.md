@@ -41,3 +41,7 @@ The configuration service uses HTTP(S) protocol to get the configuration file an
 ### Configuration Service Provider
 
 The configuration service should be initialized during bootstrap process, before an app is initialized. The `APP_INITIALIZER` injection-token serves this puporse. It uses a factory that returns a promise. The factory function will provide the enviornment parameter and initialize the configuration service.
+
+### Error Handling
+
+If the configuration service fails to load the configuration data, it should stop the application and throw an excpetion. The exception message should give the failure reason.
