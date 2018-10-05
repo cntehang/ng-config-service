@@ -49,7 +49,7 @@ export class ConfigService {
           this.settings = data
         })
         .catch(err => {
-          console.error(`ConfigService failed to load config file ${this.url}: ${err}`)
+          console.error(`ConfigService failed to load ${this.url}. Error: ${err}`)
         })
     }
   }

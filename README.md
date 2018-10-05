@@ -63,9 +63,7 @@ export class MyComponent {
 
 ## Developing
 
-This runtime config service is simple to use with one line to initialize it and one single method to get configuration values. Nonetheless, it is flexible to support different usage scenarios: flexible configuration schema and flexible configuration file path that supports environment variables. Because it uses `HttpClient` to retrieve the configuration data from the specified URL, the configuration source can be an API that returns configuration in JSON format.
-
-[The Angular application environments](https://github.com/angular/angular-cli/wiki/stories-application-environments) is a build time configuration tool that is not appropriate for runtime because any change in the environment requires a rebuild/recompile of the source code. The runtime config service doesn't need rebuild/recompile of the source code to change the configuration.
+The [Design Document](./docs/design.md) and the [Development Document](./docs/develop.md) describe the design consideration and the development details.
 
 ### Built With
 
@@ -77,7 +75,7 @@ It should be compatible with Angular 6.0 or later.
 
 ### Setting up Dev
 
-The source code has several projects created by Angular CLI and uses its [library support](https://github.com/angular/angular-cli/wiki/stories-create-library). It has a regular Angular application served as a demo project that uses the config service library. The config service source code is located in `projects/ng-config-service` folder.
+The source code has two projects created by Angular CLI and uses its [library support](https://github.com/angular/angular-cli/wiki/stories-create-library). It has a regular Angular application served as a demo project that uses the config service library. The config service source code is located in `projects/ng-config-service` folder.
 
 ### Building
 
@@ -105,3 +103,7 @@ Test the config service project.
 ## Style guide
 
 It uses [`tslint-angular`](https://github.com/mgechev/tslint-angular) and [`prettier`](https://prettier.io/) to enforce a consistent code format. The detail styles are defined in the [`tslint.json` file](./tslint.json) and the [`.prettierrc` file](./prettierrc).
+
+## Code Documentation
+
+The project uses [Compodoc](https://compodoc.app/) to generate code documents. Just run `npm run docs` to generate documents in the `dist/documentation` folder.

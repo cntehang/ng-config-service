@@ -22,19 +22,21 @@ The configuration data source can be a JSON file or an API that returns JSON dat
 
 To make it simple, there are onlyh two public API: `load` to load configuraiton data and `get` to get a configuration value for a specific key.
 
+To support AOT compilation, the configuration data path has to be provided during build time.
+
 ## Design
 
-The runtime configuration implmentation has two parts: a configuration service that loads configuration data and let others to get configuration settings, a provider initializes the configuration service during the Angular application boot process.
+The runtime configuration implmentation has two parts: 1) a configuration service that loads configuration data and let others to get configuration settings, and 2) a provider initializes the configuration service during the Angular application boot process.
 
 ### Configuration Data URL
 
-The configuration file is one kind of application asset. A good place should be the `src/assets/config` folder -- this is the default configuration data URL.
+The configuration file is one kind of application asset. The location should be ignored by the compiler and is available in runtime. The `src/assets/config/config.json` is used as the default configuration data URL.
 
-It's possbile to specify a configuration file path or a backend API URL to get the configuration data.
+It's possbile to specify a configuration file path or a backend API URL to get the configuration data. The `InjectionToken` allows one to define a string value that can be opitonally injected to the configuration service.
 
 ### Configuration Service
 
-The configuration service uses HTTP(S) protocol to get the configuration file and initialize the configuration settings. The configuration service should be a singlton created by the root injector。It has an `load` method that is called by a DI provider to load the configuration file.
+The configuration service uses HTTP(S) protocol to get the configuration file and initialize the configuration settings. The configuration service should be a singlton created by the root injector。It has an `load` method that is called by a DI provider to load the configuration file. To make it simple, only one method, i.e., `get<T>(key: string): T | undefined` is defined to get configuration settings.
 
 ### Configuration Service Provider
 
