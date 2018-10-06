@@ -7,9 +7,9 @@ import { ConfigService } from 'ng-config-service'
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  propertyValue = 'not defined'
+  configValue = 'not defined'
 
-  constructor(service: ConfigService) {
-    this.propertyValue = service.get('testKey')
+  constructor(public configService: ConfigService) {
+    this.configValue = configService.get('testKey')
   }
 }

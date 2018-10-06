@@ -98,7 +98,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Tests
 
-Test the config service project.
+We use the demo app to test configuration service. Use `ng test` to run the test.
 
 ## Style guide
 

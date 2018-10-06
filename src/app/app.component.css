@@ -1,6 +1,7 @@
-.property-value {
+#config-value {
   color: turquoise;
   font-size: 2em;
+  padding: 5px;
   margin: 10px;
   border: solid 2px;
 }
