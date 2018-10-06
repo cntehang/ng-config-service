@@ -30,6 +30,8 @@ import { bootConfigServiceProvider } from 'ng-config-service'
 export class AppModule {}
 ```
 
+### A Different Configuration Data URL
+
 If you want to use a different URL of a configuration file path or an HTTP API, you only need to assign the URL to a pre-defined injection token `NG_CONFIG_URL_TOKEN` in the above `providers` metadata. The following is an example.
 
 ```ts
@@ -60,6 +62,10 @@ export class MyComponent {
   }
 }
 ```
+
+### Error
+
+If the config service fails to load the configuration data, due to either an invalid URL or wrong JSON syntax, it throws an Error exception that stops the Angular application bootstrap.
 
 ## Developing
 

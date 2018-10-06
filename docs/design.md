@@ -44,4 +44,6 @@ The configuration service should be initialized during bootstrap process, before
 
 ### Error Handling
 
-If the configuration service fails to load the configuration data, it should stop the application and throw an excpetion. The exception message should give the failure reason.
+If the configuration service fails to load the configuration data, due to either an invalid URL or wrong JSON syntax, it should stop the application and throw an excpetion. The exception message should give the failure reason.
+
+How can an application continue with invalid configuration?
