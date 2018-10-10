@@ -33,6 +33,12 @@ Because all build scripts are defined in the root `package.json` file and the re
 
 If the `HttpClient` fails to load the configuraiton data, it should thrown an `Error`. The error message is created from the `HttpClient` error: either from `error.message` or `error.error.message` as shown in the following code: `error.message || (error.error ? error.error.message : 'undefined')`.
 
+## CI
+
+The project uses Travis CI to build and test the project. The test is headless but `--watch=false` doesn't work. Therefore we set `singleRun: true,` in `karma.conf.js` to run all tests only once.
+
+There is no need to run e2e thus we delete the e2e test folder.
+
 [ionic-configuration-service]: https://github.com/Ritzlgrmft/ionic-configuration-service
 [angular-library-series]: https://blog.angularindepth.com/the-angular-library-series-publishing-ce24bb673275
 [ng-config]: https://github.com/BizAppFramework/ng-config
