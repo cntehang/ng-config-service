@@ -14,6 +14,7 @@
     "test": "npm run build-lib && ng test",
     "test-headless": "npm run build-lib && ng test --browsers=ChromeHeadless",
     "lint": "ng lint",
+    "e2e": "ng e2e",
     "format:fix": "pretty-quick --staged",
     "precommit": "run-s format:fix lint"
   },
