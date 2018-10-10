@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/cntehang/ng-config-service.svg?branch=master)](https://travis-ci.com/cntehang/ng-config-service)
 [![Version](https://badge.fury.io/js/ng-config-service.svg)](https://www.npmjs.com/package/ng-config-service)
-[![License](https://img.shields.io/npm/l/ng-config-service.svg.svg)](https://www.npmjs.com/package/ng-config-service.svg)
+[![License](https://img.shields.io/npm/l/ng-config-service.svg)](https://www.npmjs.com/package/ng-config-service.svg)
 [![Downloads](https://img.shields.io/npm/dt/ng-config-service.svg)](https://www.npmjs.com/package/ng-config-service)
 
 > A simple and flexible runtime config service for Angular application.
