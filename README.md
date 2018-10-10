@@ -1,4 +1,7 @@
-# ng-config-service
+# ng-config-service &middot; [![Build Status](https://travis-ci.com/cntehang/ng-config-service.svg?branch=master)](https://travis-ci.com/cntehang/ng-config-service)
+
+[![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm)
+https://www.npmjs.com/package/ng-config-service
 
 > A simple and flexible runtime config service for Angular application.
 

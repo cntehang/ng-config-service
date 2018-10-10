@@ -35,7 +35,9 @@ If the `HttpClient` fails to load the configuraiton data, it should thrown an `E
 
 ## CI
 
-The project uses Travis CI to build and test the project. The test is headless but `--watch=false` doesn't work. Therefore we set `singleRun: true,` in `karma.conf.js` to run all tests only once.
+The project uses Travis CI to build and test the project. The test is headless but `--watch=false` doesn't work. Therefore we set `singleRun: true,` in the `karma.conf.js` for both the demo project and lib project to run all tests only once and exits.
+
+Additionally, set `sudo: required` in `.travis.yml` because the chrome sandbox needs sudo.
 
 [ionic-configuration-service]: https://github.com/Ritzlgrmft/ionic-configuration-service
 [angular-library-series]: https://blog.angularindepth.com/the-angular-library-series-publishing-ce24bb673275
